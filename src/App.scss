@@ -1,33 +1,43 @@
 @import "./styles/Colors.scss";
 @import "~bootstrap/scss/bootstrap.scss";
 
-
 .body {
-    background-color: $back-color;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    //   align-items: center;
-    h1 {
-      font-family: "Playfair Display", serif;
-      font-weight: 600;
-      color: $theme-color;
-      align-self: center;
-      margin-bottom: 20px;
-    }
-    p {
-      padding-left: 5%;
-      padding-right: 5%;
-      font-family: "Fira Sans Extra Condensed", sans-serif;
-      font-size: 20px;
-    }
+  background-color: $back-color;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  //   align-items: center;
+  h1 {
+    font-family: "Playfair Display", serif;
+    font-weight: 600;
+    color: $theme-color;
+    align-self: center;
+    margin-bottom: 20px;
   }
+  p {
+    padding-left: 5%;
+    padding-right: 5%;
+    font-family: "Fira Sans Extra Condensed", sans-serif;
+    font-size: 20px;
+  }
+}
 
-  .cards {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    .card {
-      margin: 10px 15px 10px 10px;
-    }
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  .card {
+    height: auto;
+    width: auto;
+    margin: 10px 15px 10px 10px;
   }
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+}
+.link:hover {
+  text-decoration: none;
+  color: white;
+}

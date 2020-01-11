@@ -5,6 +5,7 @@ import ZazPage from "./components/ZazPage";
 import Main from "./components/Main";
 import SportCarPage from "./components/SportCarPage";
 import MuscleCarPage from "./components/MuscleCarPage";
+import CarInfo from "./components/CarInfo";
 import "./App.scss";
 
 import {
@@ -23,6 +24,10 @@ function App() {
           <Route path="/main">
             <Main />
           </Route>
+          <Route
+            path="/zaz/:carId"
+            render={routeProps => <CarInfo {...routeProps} />}
+          />
           <Route path="/zaz">
             <ZazPage />
           </Route>
@@ -32,6 +37,7 @@ function App() {
           <Route path="/muscle">
             <MuscleCarPage />
           </Route>
+
           <Route path="*">
             <Redirect to="/main" />
           </Route>

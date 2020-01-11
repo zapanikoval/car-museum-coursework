@@ -1,0 +1,18 @@
+@import "./Colors.scss";
+
+.car-image{
+    margin-right: 30px;
+}
+.body{
+    flex-direction: row;
+}
+.car-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    .car-descr{
+        margin-top: 15px;
+        padding: 15px;
+    }
+}

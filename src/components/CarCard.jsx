@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { Redirect, NavLink } from "react-router-dom";
 
 const ColorButton = withStyles(theme => ({
   root: {
@@ -22,14 +23,20 @@ const ColorButton = withStyles(theme => ({
 const useStyles = makeStyles({
   card: {
     maxWidth: 330,
+    maxHeight: 460,
+    minHeight: 460
   },
   media: {
     height: 200
   },
+  content: {
+    minHeight: 215,
+    maxHeight: 250
+  },
   title: {
     color: "#580909",
     fontFamily: ['"Lobster"', "cursive"].join(",")
-  }
+  },
 });
 
 export default function CarCard(props) {
@@ -40,7 +47,7 @@ export default function CarCard(props) {
       <Card className={classes.card}>
         <CardActionArea>
           <CardMedia className={classes.media} image={img} title="Image" />
-          <CardContent>
+          <CardContent className={classes.content}>
             <Typography
               gutterBottom
               variant="h5"
@@ -56,7 +63,9 @@ export default function CarCard(props) {
         </CardActionArea>
         <CardActions>
           <ColorButton size="small" color="primary">
-            Подробнее...
+            <NavLink to={`/zaz/${props.car.id}`} className="link">
+              Подробнее...
+            </NavLink>
           </ColorButton>
         </CardActions>
       </Card>

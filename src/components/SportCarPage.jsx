@@ -52,6 +52,11 @@ export default class SportCarPage extends React.Component {
             name="Nissan GTR"
             description="Быстрая супергонка выбухивка"
           />
+          <CarCard
+            img={nissan}
+            name="Nissan GTR"
+            description="Быстрая супергонка выбухивка"
+          />
         </div>
       </div>
     );

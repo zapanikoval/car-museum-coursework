@@ -1,8 +1,7 @@
 import React from "react";
 import CarCard from "./CarCard";
 import "../styles/ZazPage.scss";
-
-import zaz from "../images/zaz.jpg";
+import cars from "./zaz";
 
 export default class ZazPage extends React.Component {
   constructor(props) {
@@ -27,31 +26,17 @@ export default class ZazPage extends React.Component {
           neque sunt quia.
         </p>
         <div className="cards row">
-          <CarCard
-            img={zaz}
-            name="Запорожец"
-            description="Чудесная машина можно на ней ездить"
-          />
-          <CarCard
-            img={zaz}
-            name="Запорожец"
-            description="Чудесная машина можно на ней ездить"
-          />
-          <CarCard
-            img={zaz}
-            name="Запорожец"
-            description="Чудесная машина можно на ней ездить"
-          />
-          <CarCard
-            img={zaz}
-            name="Запорожец"
-            description="Чудесная машина можно на ней ездить"
-          />
-          <CarCard
-            img={zaz}
-            name="Запорожец"
-            description="Чудесная машина можно на ней ездить"
-          />
+          {cars.map(car => {
+            return (
+              <CarCard
+                img={car.img}
+                name={car.name}
+                description={car.shortDescr}
+                id={car}
+                car={car}
+              />
+            );
+          })}
         </div>
       </div>
     );
