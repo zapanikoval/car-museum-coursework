@@ -1,0 +1,32 @@
+.background-header {
+  background-image: url("../images/background-pattern.jpg");
+  height: 160px;
+  z-index: -9999;
+  padding: 0;
+  div {
+    margin: 0;
+    width: 100%;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.logo {
+  display: block;
+  height: 150px;
+  width: auto;
+}
+
+.bg-red {
+  background-color: #580909;
+}
+
+.navbar-nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
