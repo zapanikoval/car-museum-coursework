@@ -2,7 +2,7 @@ import React from "react";
 import CarCard from "./CarCard";
 import "../styles/SportCarPage.scss";
 
-import nissan from "../images/nissan.jpg";
+import cars from "./cars";
 
 export default class SportCarPage extends React.Component {
   constructor(props) {
@@ -27,36 +27,18 @@ export default class SportCarPage extends React.Component {
           neque sunt quia.
         </p>
         <div className="cards row">
-          <CarCard
-            img={nissan}
-            name="Nissan GTR"
-            description="Быстрая супергонка выбухивка"
-          />
-          <CarCard
-            img={nissan}
-            name="Nissan GTR"
-            description="Быстрая супергонка выбухивка"
-          />
-          <CarCard
-            img={nissan}
-            name="Nissan GTR"
-            description="Быстрая супергонка выбухивка"
-          />
-          <CarCard
-            img={nissan}
-            name="Nissan GTR"
-            description="Быстрая супергонка выбухивка"
-          />
-          <CarCard
-            img={nissan}
-            name="Nissan GTR"
-            description="Быстрая супергонка выбухивка"
-          />
-          <CarCard
-            img={nissan}
-            name="Nissan GTR"
-            description="Быстрая супергонка выбухивка"
-          />
+          {cars.map(car => {
+            if (car.type === "sport")
+              return (
+                <CarCard
+                  img={car.img}
+                  name={car.name}
+                  description={car.shortDescr}
+                  id={car}
+                  car={car}
+                />
+              );
+          })}
         </div>
       </div>
     );

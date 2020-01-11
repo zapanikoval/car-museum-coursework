@@ -25,7 +25,7 @@ function App() {
             <Main />
           </Route>
           <Route
-            path="/zaz/:carId"
+            path="/car-info/:carId"
             render={routeProps => <CarInfo {...routeProps} />}
           />
           <Route path="/zaz">

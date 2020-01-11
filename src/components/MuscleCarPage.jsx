@@ -1,6 +1,7 @@
 import React from "react";
 import CarCard from "./CarCard";
 import "../styles/MuscleCarPage.scss";
+import cars from "./cars";
 
 import mustang from "../images/mustang.jpg";
 
@@ -12,7 +13,7 @@ export default class SportCarPage extends React.Component {
   render() {
     return (
       <div className="container body">
-        <h1>Музей спорткаров!</h1>
+        <h1>Музей маслкаров!</h1>
         <p>
           Quidem necessitatibus autem aut tempore esse saepe ratione. Voluptatum
           voluptas ut laborum natus eaque optio. Ex et cumque animi vel dolorem.
@@ -27,31 +28,18 @@ export default class SportCarPage extends React.Component {
           neque sunt quia.
         </p>
         <div className="cards row">
-          <CarCard
-            img={mustang}
-            name="Ford Mustang GT"
-            description="Быстрая супергонка выбухивка"
-          />
-          <CarCard
-            img={mustang}
-            name="Ford Mustang GT"
-            description="Быстрая супергонка выбухивка"
-          />
-          <CarCard
-            img={mustang}
-            name="Ford Mustang GT"
-            description="Быстрая супергонка выбухивка"
-          />
-          <CarCard
-            img={mustang}
-            name="Ford Mustang GT"
-            description="Быстрая супергонка выбухивка"
-          />
-          <CarCard
-            img={mustang}
-            name="Ford Mustang GT"
-            description="Быстрая супергонка выбухивка"
-          />
+          {cars.map(car => {
+            if (car.type === "muscle")
+              return (
+                <CarCard
+                  img={car.img}
+                  name={car.name}
+                  description={car.shortDescr}
+                  id={car}
+                  car={car}
+                />
+              );
+          })}
         </div>
       </div>
     );

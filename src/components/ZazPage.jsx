@@ -1,7 +1,7 @@
 import React from "react";
 import CarCard from "./CarCard";
 import "../styles/ZazPage.scss";
-import cars from "./zaz";
+import cars from "./cars";
 
 export default class ZazPage extends React.Component {
   constructor(props) {
@@ -27,15 +27,16 @@ export default class ZazPage extends React.Component {
         </p>
         <div className="cards row">
           {cars.map(car => {
-            return (
-              <CarCard
-                img={car.img}
-                name={car.name}
-                description={car.shortDescr}
-                id={car}
-                car={car}
-              />
-            );
+            if (car.type === "zaz")
+              return (
+                <CarCard
+                  img={car.img}
+                  name={car.name}
+                  description={car.shortDescr}
+                  id={car}
+                  car={car}
+                />
+              );
           })}
         </div>
       </div>

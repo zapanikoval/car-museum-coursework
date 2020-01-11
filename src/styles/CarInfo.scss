@@ -1,18 +1,28 @@
 @import "./Colors.scss";
 
-.car-image{
-    margin-right: 30px;
+.car-image {
+  margin-right: 30px;
 }
-.body{
-    flex-direction: row;
+.bodyy {
+  flex-direction: row;
+  background-image: url("../images/car-params-pattern.jpg");
 }
-.car-info{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    .car-descr{
-        margin-top: 15px;
-        padding: 15px;
-    }
+.car-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  .car-descr {
+    margin-top: 15px;
+    padding: 15px;
+    font-family: "Fira Sans Extra Condensed", sans-serif;
+  }
 }
+.car-params {
+  margin-top: 40px;
+}
+.table-theme {
+  background-color: $theme-color;
+  color: white;
+}
+
