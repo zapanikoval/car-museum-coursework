@@ -1,6 +1,11 @@
 import React from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ZazPage from "./components/ZazPage";
+import Main from "./components/Main";
+import SportCarPage from "./components/SportCarPage";
+import MuscleCarPage from "./components/MuscleCarPage";
+import "./App.scss";
 
 import {
   BrowserRouter as Router,
@@ -8,7 +13,6 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import Main from "./components/Main";
 
 function App() {
   return (
@@ -20,13 +24,13 @@ function App() {
             <Main />
           </Route>
           <Route path="/zaz">
-            <h1>Zaz</h1>
+            <ZazPage />
           </Route>
           <Route path="/sport">
-            <h1>Sport</h1>
+            <SportCarPage />
           </Route>
           <Route path="/muscle">
-            <h1>Muscle</h1>
+            <MuscleCarPage />
           </Route>
           <Route path="*">
             <Redirect to="/main" />
