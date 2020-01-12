@@ -1,16 +1,11 @@
 import React from "react";
 import CarCard from "./CarCard";
 import "../styles/MuscleCarPage.scss";
-import cars from "./cars";
+import { connect } from "react-redux";
 
-import mustang from "../images/mustang.jpg";
-
-export default class SportCarPage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+class MuscleCarPage extends React.Component {
   render() {
+    const { cars } = this.props;
     return (
       <div className="container body">
         <h1>Музей маслкаров!</h1>
@@ -29,7 +24,7 @@ export default class SportCarPage extends React.Component {
         </p>
         <div className="cards row">
           {cars.map(car => {
-            if (car.type === "muscle")
+            if (car !== undefined)
               return (
                 <CarCard
                   img={car.img}
@@ -45,3 +40,14 @@ export default class SportCarPage extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  const cars = state.map(car => {
+    if (car.type === "muscle") return car;
+  });
+  return {
+    cars
+  };
+};
+
+export default connect(mapStateToProps)(MuscleCarPage);

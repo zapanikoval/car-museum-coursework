@@ -1,11 +1,11 @@
 import React from "react";
-import cars from "./cars";
 import "../styles/CarInfo.scss";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import { connect } from "react-redux";
 
-export default class CarInfo extends React.Component {
+class CarInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,6 +15,7 @@ export default class CarInfo extends React.Component {
   }
 
   componentDidMount() {
+    const { cars } = this.props;
     const car = cars.find(car => car.id === this.props.match.params.carId);
     this.setState({ car });
   }
@@ -22,7 +23,7 @@ export default class CarInfo extends React.Component {
     this.props.history.goBack();
   }
 
-  render() {      
+  render() {
     const { car } = this.state;
     return (
       <div className="container bodyy pt-3 pb-3">
@@ -121,3 +122,11 @@ export default class CarInfo extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    cars: state
+  };
+}
+
+export default connect(mapStateToProps)(CarInfo);

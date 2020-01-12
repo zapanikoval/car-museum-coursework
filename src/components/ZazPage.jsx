@@ -1,14 +1,12 @@
 import React from "react";
 import CarCard from "./CarCard";
 import "../styles/ZazPage.scss";
-import cars from "./cars";
+import { connect } from "react-redux";
 
-export default class ZazPage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+class ZazPage extends React.Component {
+  
   render() {
+    const { cars } = this.props;
     return (
       <div className="container body">
         <h1>Музей автомобилей ЗАЗ!</h1>
@@ -27,7 +25,7 @@ export default class ZazPage extends React.Component {
         </p>
         <div className="cards row">
           {cars.map(car => {
-            if (car.type === "zaz")
+            if (car !== undefined)
               return (
                 <CarCard
                   img={car.img}
@@ -43,3 +41,14 @@ export default class ZazPage extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  const cars = state.map(car => {
+    if (car.type === "zaz") return car;
+  });
+  return {
+    cars
+  };
+};
+
+export default connect(mapStateToProps)(ZazPage);

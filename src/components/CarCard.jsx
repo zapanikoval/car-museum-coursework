@@ -7,7 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { Redirect, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const ColorButton = withStyles(theme => ({
   root: {

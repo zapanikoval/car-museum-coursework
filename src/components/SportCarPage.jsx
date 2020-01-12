@@ -1,15 +1,12 @@
 import React from "react";
 import CarCard from "./CarCard";
 import "../styles/SportCarPage.scss";
+import { connect } from "react-redux";
 
-import cars from "./cars";
-
-export default class SportCarPage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+class SportCarPage extends React.Component {
 
   render() {
+    const { cars } = this.props;
     return (
       <div className="container body">
         <h1>Музей спорткаров!</h1>
@@ -28,7 +25,7 @@ export default class SportCarPage extends React.Component {
         </p>
         <div className="cards row">
           {cars.map(car => {
-            if (car.type === "sport")
+            if (car !== undefined)
               return (
                 <CarCard
                   img={car.img}
@@ -44,3 +41,14 @@ export default class SportCarPage extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  const cars = state.map(car => {
+    if (car.type === "sport") return car;
+  });
+  return {
+    cars
+  };
+};
+
+export default connect(mapStateToProps)(SportCarPage);

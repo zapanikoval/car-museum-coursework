@@ -1,7 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 
+import reducer from "./utils/reducer";
 
+const initialState = [];
+const store = createStore(reducer, initialState);
+store.dispatch({ type: "INITIAL_CARS" });
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
