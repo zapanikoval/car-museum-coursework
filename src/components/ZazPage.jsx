@@ -4,7 +4,6 @@ import "../styles/ZazPage.scss";
 import { connect } from "react-redux";
 
 class ZazPage extends React.Component {
-  
   render() {
     const { cars } = this.props;
     return (
@@ -43,6 +42,8 @@ class ZazPage extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
+
   const cars = state.map(car => {
     if (car.type === "zaz") return car;
   });

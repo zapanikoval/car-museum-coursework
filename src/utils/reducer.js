@@ -1,9 +1,9 @@
 import fetchCars from "./fetchCars";
 
-export default function reducer(state, action) {
+export default function reducer(state = [], action) {
   switch (action.type) {
     case "INITIAL_CARS": {
-      return fetchCars();
+      return action.cars;
     }
     default:
       return state;

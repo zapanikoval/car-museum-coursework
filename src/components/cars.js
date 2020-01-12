@@ -1,18 +1,17 @@
 const cars = [
   {
-    id: "0",
     type: "zaz",
     img: "https://i.infocar.ua/i/12/1547/1400x936.jpg",
     name: "ЗАЗ Vida",
     motor: "1.5i 8v",
     motorType: "ДВС",
     gas: "Бензин",
-    power: "84 л.с.",
-    maxSpeed: "170 км/ч",
-    vol: "1498 куб.см",
-    rams: "4",
+    power: 84,
+    maxSpeed: 170,
+    vol: 1498,
+    rams: 4,
     gasRate: "7.8",
-    countPlaces: "5",
+    countPlaces: 5,
     transmission: "5-Мех",
     shortDescr:
       "Переднеприводный седан класса «В», практически полностью копирующий первое поколение Chevrolet Aveo в кузове T250.",
@@ -22,19 +21,18 @@ const cars = [
       За счет того, что уровень локализации производства ЗАЗ Vida превышает порог в 50%, седан разрешено экспортировать на внешние рынки. В частности, российский, где автомобиль продается под именем Point. Со временем Vida должна полностью заменить собой легендарный ЗАЗ Lanos.`
   },
   {
-    id: "1",
     type: "zaz",
     img: "https://i.infocar.ua/i/12/720/1400x936.jpg",
     name: "ЗАЗ Lanos Cargo",
     motor: "1.5i 8v",
     motorType: "ДВС",
     gas: "Бензин",
-    power: "84 л.с.",
-    maxSpeed: "150 км/ч",
-    vol: "1498 куб.см",
-    rams: "4",
+    power: 84,
+    maxSpeed: 150,
+    vol: 1498,
+    rams: 4,
     gasRate: "9.5",
-    countPlaces: "2",
+    countPlaces: 2,
     transmission: "5-Мех",
     shortDescr:
       "Грузовой автомобиль, созданный на базе шасси легкового автомобиля Daewoo Lanos.",
@@ -49,19 +47,18 @@ const cars = [
       Привлекательными эксплуатационными характеристиками ЗАЗ Lanos Cargo являются экономичность, большой дверной проем, малая погрузочная высота и вполне доступная для такого автомобиля цена.`
   },
   {
-    id: "2",
     type: "zaz",
     img: "https://i.infocar.ua/i/12/707/1400x936.jpg",
     name: "ЗАЗ Sens",
     motor: "1.3i 8v",
     motorType: "ДВС",
     gas: "Бензин",
-    power: "70 л.с.",
-    maxSpeed: "162 км/ч",
-    vol: "1299 куб.см",
-    rams: "4",
+    power: 70,
+    maxSpeed: 162,
+    vol: 1299,
+    rams: 4,
     gasRate: "7.2",
-    countPlaces: "5",
+    countPlaces: 5,
     transmission: "5-Мех",
     shortDescr:
       "Это первый украинский автомобиль класса B, созданный украинскими специалистами СП `АвтоЗАЗ-Дэу`.",
@@ -76,19 +73,18 @@ const cars = [
       Благодаря просторному салону, тяговитому и экономичному двигателю, легкому управлению и выносливой подвеске ЗАЗ Сенс прекрасно зарекомендовал себя и как разъездная машина.`
   },
   {
-    id: "3",
     type: "zaz",
     img: "https://i.infocar.ua/i/12/1100/1400x936.jpg",
     name: "ЗАЗ Forza",
     motor: "1.5i 16v",
     motorType: "ДВС",
     gas: "Бензин",
-    power: "109 л.с.",
-    maxSpeed: "160 км/ч",
-    vol: "1497 куб.см",
-    rams: "4",
+    power: 109,
+    maxSpeed: 160,
+    vol: 1497,
+    rams: 4,
     gasRate: "7.2",
-    countPlaces: "5",
+    countPlaces: 5,
     transmission: "5-Мех",
     shortDescr:
       "Локализованная для Украины версия переднеприводного лифтбека Chery A13. Дебют модели, пришедшей на смену ЗАЗ-1103 Славута.",
@@ -103,19 +99,18 @@ const cars = [
       Производство комплектующих для ЗАЗ Forza разделено между Украиной и Китаем примерно поровну. В Китае изготавливают кузовные панели, а в Украине - обивку сидений, приборную панель, сиденья, бензобак, бамперы, и выхлопную систему. Сборка двигателя ACTECO SQR477F налажена на заводе МеМЗ в Мелитополе.  `
   },
   {
-    id: "4",
     type: "zaz",
     img: "https://i.infocar.ua/i/12/149/1400x936.jpg",
     name: "ЗАЗ Lanos T150",
     motor: "1.5i",
     motorType: "ДВС",
     gas: "Бензин",
-    power: "86 л.с.",
-    maxSpeed: "172 км/ч",
-    vol: "1498 куб.см",
-    rams: "4",
+    power: 86,
+    maxSpeed: 172,
+    vol: 1498,
+    rams: 4,
     gasRate: "7.8",
-    countPlaces: "5",
+    countPlaces: 5,
     transmission: "5-Мех",
     shortDescr:
       "Седан B-класса с механической коробкой передач, 1,5-литровым двигателем мощностью 86 л.с.",
@@ -130,7 +125,6 @@ const cars = [
       На российском авторынке автомобиль ЗАЗ Ланос T150 продается под торговой маркой Chevrolet Lanos и ЗАЗ Chance.`
   },
   {
-    id: "5",
     type: "sport",
     img:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Nissan_GT-R_at_NAIAS_2012_%286679996743%29.jpg/1200px-Nissan_GT-R_at_NAIAS_2012_%286679996743%29.jpg",
@@ -138,12 +132,12 @@ const cars = [
     motor: "3.8 л VR38DETT твин-турбо V6",
     motorType: "ДВС",
     gas: "Бензин",
-    power: "480-600 л. с.",
-    maxSpeed: "315 км/ч",
-    vol: "3800 куб.см",
-    rams: "6",
+    power: 600,
+    maxSpeed: 315,
+    vol: 3800,
+    rams: 6,
     gasRate: "8.9",
-    countPlaces: "4",
+    countPlaces: 4,
     transmission: "6-ступенчатая АКПП GR6 с двойным сцеплением",
     shortDescr:
       "Nissan GT-R (R35) — суперкар, выпускаемый компанией Nissan Motor. ",
@@ -153,7 +147,6 @@ const cars = [
     `
   },
   {
-    id: "6",
     type: "muscle",
     img:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/White_Ford_Mustang_VI_fr.jpg/435px-White_Ford_Mustang_VI_fr.jpg",
@@ -161,12 +154,12 @@ const cars = [
     motor: "5.0L V8",
     motorType: "ДВС",
     gas: "Бензин",
-    power: "426 л. с.",
-    maxSpeed: "315 км/ч",
-    vol: "4951 куб.см",
-    rams: "8",
+    power: 426,
+    maxSpeed: 315,
+    vol: 4951,
+    rams: 8,
     gasRate: "8.9",
-    countPlaces: "4",
+    countPlaces: 4,
     transmission: "6-ступенчатая МКПП",
     shortDescr:
       "Ford Mustang — культовый автомобиль класса Pony Car производства Ford Motor Company.",
@@ -178,4 +171,4 @@ const cars = [
   }
 ];
 
-export default cars;
+module.exports = cars;

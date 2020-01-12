@@ -16,7 +16,7 @@ class CarInfo extends React.Component {
 
   componentDidMount() {
     const { cars } = this.props;
-    const car = cars.find(car => car.id === this.props.match.params.carId);
+    const car = cars.find(car => car._id === this.props.match.params.carId);
     this.setState({ car });
   }
   onClickHandler() {
@@ -74,19 +74,19 @@ class CarInfo extends React.Component {
                 </tr>
                 <tr>
                   <th className="table-theme" scope="row">
-                    Мощность:
+                    Мощность(л.с):
                   </th>
                   <td>{car.power}</td>
                 </tr>
                 <tr>
                   <th className="table-theme" scope="row">
-                    Максимальная скорость:
+                    Максимальная скорость(км/ч):
                   </th>
                   <td>{car.maxSpeed}</td>
                 </tr>
                 <tr>
                   <th className="table-theme" scope="row">
-                    Объем двигателя:
+                    Объем двигателя(куб.см):
                   </th>
                   <td>{car.vol}</td>
                 </tr>

@@ -63,7 +63,7 @@ export default function CarCard(props) {
         </CardActionArea>
         <CardActions>
           <ColorButton size="small" color="primary">
-            <NavLink to={`/car-info/${props.car.id}`} className="link">
+            <NavLink to={`/car-info/${props.car._id}`} className="link">
               Подробнее...
             </NavLink>
           </ColorButton>
