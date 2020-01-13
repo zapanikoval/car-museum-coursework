@@ -3,6 +3,8 @@ import "../styles/Main.scss";
 import zaz from "../images/zaz.jpg";
 import nissan from "../images/nissan.jpg";
 import mustang from "../images/mustang.jpg";
+import $ from "jquery";
+
 
 export default function Main(props) {
   return (
@@ -39,13 +41,13 @@ export default function Main(props) {
         data-ride="carousel"
       >
         <div className="carousel-inner">
-          <div className="carousel-item active" data-interval="4000">
+          <div className="carousel-item active" data-interval="3000">
             <img src={zaz} className="d-block w-100" alt="zaz" />
           </div>
-          <div className="carousel-item" data-interval="4000">
+          <div className="carousel-item" data-interval="3000">
             <img src={nissan} className="d-block w-100" alt="nissan" />
           </div>
-          <div className="carousel-item" data-interval="4000">
+          <div className="carousel-item" data-interval="3000">
             <img src={mustang} className="d-block w-100" alt="mustang" />
           </div>
         </div>
@@ -55,7 +57,10 @@ export default function Main(props) {
           role="button"
           data-slide="prev"
         >
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
           <span className="sr-only">Previous</span>
         </a>
         <a
@@ -64,10 +69,14 @@ export default function Main(props) {
           role="button"
           data-slide="next"
         >
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
           <span className="sr-only">Next</span>
         </a>
       </div>
     </div>
   );
 }
+

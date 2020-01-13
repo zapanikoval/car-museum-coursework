@@ -1,16 +1,18 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const cors = require("cors");
-//const cars = require("../components/cars");
+
 const corsOptions = {
   origin: "http://localhost:3000",
   optionsSuccessStatus: 200
 };
-
-const Schema = mongoose.Schema;
 const app = express();
 app.use(cors(corsOptions));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
+const Schema = mongoose.Schema;
 carSchema = new Schema({
   type: String,
   img: String,
@@ -28,18 +30,12 @@ carSchema = new Schema({
   shortDescr: String,
   fullDescr: String
 });
+userSchema = new Schema({
+  username: String,
+  password: String
+});
 const Car = mongoose.model("Car", carSchema);
-
-// const newcars = cars.map(car => {
-//   return new Car(car);
-// });
-// newcars.forEach(car =>
-//   car.save(err => {
-//     if (err) return console.error(err);
-
-//     console.log("Объект сохранен: ", car);
-//   })
-// );
+const User = mongoose.model("User", userSchema);
 
 mongoose.connect(
   "mongodb://localhost:27017/carsdb",
@@ -61,5 +57,16 @@ app.get("/api/cars", (req, res) => {
     if (err) return console.error(err);
 
     res.send(cars);
+  });
+});
+
+app.post("/api/authentication", (req, res) => {
+  const { username, password } = req.body;
+  User.findOne({ username, password }, (err, user) => {
+    if (err) return console.log(err);
+    if (user) {
+      console.log(user);
+      res.send(true);
+    } else res.send(false);
   });
 });

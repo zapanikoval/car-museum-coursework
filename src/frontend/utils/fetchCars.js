@@ -11,7 +11,7 @@ export default function fetchCars() {
         fetchedCars = cars;
       }
     });
-    console.log(fetchedCars);
+    console.log("FETCHING CARS:", fetchedCars);
     dispatch({ type: "INITIAL_CARS", cars: fetchedCars });
   };
 }

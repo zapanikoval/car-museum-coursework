@@ -125,7 +125,7 @@ class CarInfo extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    cars: state
+    cars: state.cars
   };
 }
 

@@ -1,0 +1,35 @@
+@import "./Colors.scss";
+
+.sign-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("../images/car-params-pattern.jpg");
+    color: white;
+}
+.sign-form{
+    height: 310px;
+    width: 400px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(56, 56, 56);
+    border: 3px solid $theme-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 15px;
+    color: white;
+    justify-self: center;
+    align-self: center;
+    .btn-theme{
+        background-color: $theme-color;
+        color: white;
+    }
+    .sign-footer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}

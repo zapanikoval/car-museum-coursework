@@ -1,6 +1,9 @@
 @import "./styles/Colors.scss";
 @import "~bootstrap/scss/bootstrap.scss";
 
+body{
+  background-image: url("./images/car-params-pattern.jpg");
+}
 .body {
   background-color: $back-color;
   padding: 10px;
