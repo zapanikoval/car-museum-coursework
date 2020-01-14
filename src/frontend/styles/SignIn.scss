@@ -1,35 +1,63 @@
 @import "./Colors.scss";
 
-.sign-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: url("../images/car-params-pattern.jpg");
-    color: white;
+.sign-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("../images/car-params-pattern.jpg");
+  color: white;
 }
-.sign-form{
-    height: 310px;
-    width: 400px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: rgb(56, 56, 56);
-    border: 3px solid $theme-color;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 15px;
+
+.sign-form {
+  height: auto;
+  width: 400px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgb(56, 56, 56);
+  border: 3px solid $theme-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 15px;
+  color: white;
+  justify-self: center;
+  align-self: center;
+  .btn-theme {
+    background-color: $theme-color;
     color: white;
-    justify-self: center;
-    align-self: center;
-    .btn-theme{
-        background-color: $theme-color;
-        color: white;
-    }
-    .sign-footer{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
+  }
+  .btn-theme:focus {
+    box-shadow: 0 0 0 0.2rem #400606;
+  }
+  .sign-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .alert-theme {
+    background-color: $theme-color;
+    border: 2px solid black;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: none;
+    border-radius: 20px 20px 20px 0;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 500px) {
+  .sign-form {
+    height: auto;
+    width: 280px;
+  }
+}
+
+.not-valid {
+  input {
+    border: 2px solid #e53935;
+  }
+  div.alert-theme {
+    display: block;
+  }
 }

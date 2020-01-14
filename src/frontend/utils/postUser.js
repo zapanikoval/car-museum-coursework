@@ -3,7 +3,6 @@ import $ from "jquery";
 export default function postUser(user) {
   return async function(dispatch) {
     let authentication;
-    console.log("IN POST USER:", user.username, user.password);
     await $.ajax({
       url: "http://localhost:3333/api/authentication",
       contentType: "application/json",
@@ -16,7 +15,6 @@ export default function postUser(user) {
         authentication = result;
       }
     });
-    console.log("POST USER AUTH:", authentication);
     dispatch({ type: "AUTH_USER", auth: authentication });
   };
 }

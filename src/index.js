@@ -17,7 +17,7 @@ ReactDOM.render(
   <Router>
     <Provider store={store}>
       <Switch>
-        <Route exact path="/admin">
+        <Route exact path="/signin">
           <SignIn />
         </Route>
         <Route path="/">

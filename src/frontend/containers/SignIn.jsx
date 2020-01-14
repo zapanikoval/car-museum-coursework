@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/SignIn.scss";
 import { connect } from "react-redux";
 import postUser from "../utils/postUser";
+import { Redirect } from "react-router-dom";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -43,58 +44,69 @@ class SignIn extends React.Component {
     };
 
     this.props.dispatch(postUser(user));
-
-    this.clearForm(e);
     setTimeout(() => {
       this.setState({ loading: false });
-    }, 2000);
+    }, 1000);
+    this.clearForm(e);
   }
 
   render() {
-    return (
-      <>
-        <div className="sign-body">
-          <h1 className="h1">Sign In</h1>
-          <form className="sign-form" onSubmit={this.handleSubmit} name="form">
-            <div className="form-group m-3">
-              <label htmlFor="exampleInputEmail1">Username</label>
-              <input
-                name="username"
-                type="text"
-                className="form-control"
-                id="exampleInputEmail1"
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="form-group m-3">
-              <label htmlFor="exampleInputPassword1">Password</label>
-              <input
-                name="password"
-                type="password"
-                className="form-control"
-                id="exampleInputPassword1"
-                onChange={this.handleChange}
-              />
-              <div className="sign-footer mt-5">
-                <button type="submit" className="btn btn-theme">
-                  Submit
-                </button>
-                {this.state.loading && (
-                  <div className="spinner-border" role="status">
-                    <span className="sr-only">Loading...</span>
-                  </div>
-                )}
+    const { auth } = this.props;
+    if (auth === false || auth === undefined) {
+      return (
+        <>
+          <div className="sign-body">
+            <h1 className="h1">Sign In</h1>
+            <form
+              className={auth === false ? "sign-form not-valid" : "sign-form"}
+              onSubmit={this.handleSubmit}
+              name="form"
+              ref="signForm"
+            >
+              <div className="alert alert-theme invalid mb-2" role="alert">
+                Invalid username or password!
               </div>
-            </div>
-          </form>
-        </div>
-      </>
-    );
+              <div className="form-group mb-3 mr-3 ml-3">
+                <label htmlFor="exampleInputEmail1">Username</label>
+                <input
+                  name="username"
+                  type="text"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="form-group mb-0 mr-3 ml-3">
+                <label htmlFor="exampleInputPassword1">Password</label>
+                <input
+                  name="password"
+                  type="password"
+                  className="form-control"
+                  id="exampleInputPassword1"
+                  onChange={this.handleChange}
+                />
+                <div className="sign-footer mt-5">
+                  <button type="submit" className="btn btn-theme">
+                    Submit
+                  </button>
+                  {this.state.loading && (
+                    <div className="spinner-border" role="status">
+                      <span className="sr-only">Loading...</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </form>
+          </div>
+        </>
+      );
+    } else if (auth === true) {
+      return <Redirect to="/main" />;
+    }
   }
 }
 
 function mapStateToProps(state) {
-  console.log("SIGN IN MAPTOSTATEPROPS:", state.auth);
   return {
     auth: state.auth
   };

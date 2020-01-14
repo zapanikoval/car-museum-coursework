@@ -3,7 +3,6 @@ import "../styles/Main.scss";
 import zaz from "../images/zaz.jpg";
 import nissan from "../images/nissan.jpg";
 import mustang from "../images/mustang.jpg";
-import $ from "jquery";
 
 
 export default function Main(props) {

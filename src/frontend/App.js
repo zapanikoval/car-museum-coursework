@@ -6,14 +6,10 @@ import SportCarPage from "./components/SportCarPage";
 import MuscleCarPage from "./components/MuscleCarPage";
 import ZazPage from "./components/ZazPage";
 import CarInfo from "./containers/CarInfo";
+import AdminPage from "./components/AdminPage";
 import "./App.scss";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 import fetchCars from "./utils/fetchCars";
@@ -22,16 +18,21 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.props.dispatch(fetchCars());
+    this.logOut = this.logOut.bind(this);
+  }
+
+  logOut() {
+    this.props.dispatch({ type: "LOGOUT_USER" });
   }
 
   render() {
-    const { cars } = this.props;
+    const { cars, auth } = this.props;
     console.log("RENDER APP.JS: ", cars);
-    
+
     if (cars !== undefined) {
       return (
         <>
-          <Header />
+          <Header auth={auth} logOut={this.logOut} />
           <Switch>
             <Route path="/main">
               <Main />
@@ -41,20 +42,33 @@ class App extends React.Component {
               render={routeProps => <CarInfo {...routeProps} />}
             />
             <Route path="/zaz">
-              <ZazPage cars={cars.map(car => {
-                if(car.type==="zaz") return car;
-              })} />
+              <ZazPage
+                cars={cars.map(car => {
+                  if (car.type === "zaz") return car;
+                })}
+              />
             </Route>
             <Route path="/sport">
-              <SportCarPage cars={cars.map(car => {
-                if(car.type==="sport") return car;
-              })}/>
+              <SportCarPage
+                cars={cars.map(car => {
+                  if (car.type === "sport") return car;
+                })}
+              />
             </Route>
             <Route path="/muscle">
-              <MuscleCarPage cars={cars.map(car => {
-                if(car.type==="muscle") return car;
-              })}/>
+              <MuscleCarPage
+                cars={cars.map(car => {
+                  if (car.type === "muscle") return car;
+                })}
+              />
             </Route>
+            {auth ? (
+              <Route path="/admin">
+                <AdminPage cars={cars} dispatch={this.props.dispatch} />
+              </Route>
+            ) : (
+              <Redirect to="signin" />
+            )}
 
             <Route path="*">
               <Redirect to="/main" />
@@ -63,17 +77,14 @@ class App extends React.Component {
           <Footer />
         </>
       );
-    }
-    else return (
-      <>
-      </>
-    );
+    } else return <></>;
   }
 }
 
 function mapStateToProps(state) {
   return {
-    cars: state.cars
+    cars: state.cars,
+    auth: state.auth
   };
 }
 
