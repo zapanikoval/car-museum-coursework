@@ -7,12 +7,13 @@ import MuscleCarPage from "./components/MuscleCarPage";
 import ZazPage from "./components/ZazPage";
 import CarInfo from "./containers/CarInfo";
 import AdminPage from "./components/AdminPage";
+import AddPage from "./components/AddPage";
 import "./App.scss";
 
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
-import fetchCars from "./utils/fetchCars";
+import fetchCars from "./utils/carsActions/fetchCars";
 
 class App extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class App extends React.Component {
 
   render() {
     const { cars, auth } = this.props;
-    console.log("RENDER APP.JS: ", cars);
+    console.log(cars);
 
     if (cars !== undefined) {
       return (
@@ -62,14 +63,16 @@ class App extends React.Component {
                 })}
               />
             </Route>
-            {auth ? (
-              <Route path="/admin">
-                <AdminPage cars={cars} dispatch={this.props.dispatch} />
-              </Route>
-            ) : (
+            {/* {auth ? ( */}
+            <Route path="/admin">
+              <AdminPage cars={cars} dispatch={this.props.dispatch} />
+            </Route>
+            {/* ) : (
               <Redirect to="signin" />
-            )}
-
+            )} */}
+            <Route path="/add">
+              <AddPage dispatch={this.props.dispatch} />
+            </Route>
             <Route path="*">
               <Redirect to="/main" />
             </Route>
@@ -77,7 +80,7 @@ class App extends React.Component {
           <Footer />
         </>
       );
-    } else return <></>;
+    } else return <h1>Загрузка...</h1>;
   }
 }
 

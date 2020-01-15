@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/SignIn.scss";
 import { connect } from "react-redux";
-import postUser from "../utils/postUser";
+import postUser from "../utils/userAuth/postUser";
 import { Redirect } from "react-router-dom";
 
 class SignIn extends React.Component {

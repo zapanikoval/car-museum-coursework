@@ -12,7 +12,6 @@ import SignIn from "./frontend/containers/SignIn";
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
-
 ReactDOM.render(
   <Router>
     <Provider store={store}>
@@ -28,4 +27,3 @@ ReactDOM.render(
   </Router>,
   document.getElementById("root")
 );
-

@@ -60,7 +60,46 @@ app.get("/api/cars", (req, res) => {
   });
 });
 
+app.post("/api/cars/add", (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+  const newCar = new Car({ ...req.body });
+
+  newCar.save(err => {
+    if (err) return console.log(err);
+    Car.findOne({ ...req.body }, (err, car) => {
+      if (err) return console.log(err);
+      console.log("CAR ADDED");
+      console.log(car);
+
+      res.send(car);
+    });
+  });
+});
+
+app.put("/api/cars/update", (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+  const carToUpdate = { ...req.body };
+  Car.findByIdAndUpdate(
+    carToUpdate._id,
+    carToUpdate,
+    { new: true },
+    (err, car) => {
+      if (err) return console.log(err);
+      res.send(car);
+    }
+  );
+});
+
+app.delete("/api/cars/delete/:id", (req, res) => {
+  const id = req.params.id;
+  Car.findByIdAndDelete(id, (err, car) => {
+    if (err) return console.log(err);
+    res.send(car);
+  });
+});
+
 app.post("/api/authentication", (req, res) => {
+  if (!req.body) return res.sendStatus(400);
   const { username, password } = req.body;
   User.findOne({ username, password }, (err, user) => {
     if (err) return console.log(err);
