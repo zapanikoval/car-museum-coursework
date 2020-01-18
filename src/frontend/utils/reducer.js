@@ -16,11 +16,11 @@ export default function reducer(state = {}, action) {
       return { ...state, cars: newCars };
     }
     case "DELETE_CAR": {
-      const indexDeleteCar = state.cars.findIndex(car => {
-        if (car._id === action.id) return car;
-      });
-      console.log("DELETE_CAR ON REDUCER. INDEX: ", indexDeleteCar);
-      const newCars = state.cars.slice(indexDeleteCar, 1);
+      console.log(action.id);
+
+      const newCars = state.cars.filter(car => car._id !== action.id);
+      console.log(newCars);
+
       return { ...state, cars: newCars };
     }
     case "AUTH_USER": {

@@ -63,13 +63,13 @@ class App extends React.Component {
                 })}
               />
             </Route>
-            {/* {auth ? ( */}
+            {auth ? (
             <Route path="/admin">
               <AdminPage cars={cars} dispatch={this.props.dispatch} />
             </Route>
-            {/* ) : (
+            ) : (
               <Redirect to="signin" />
-            )} */}
+            )}
             <Route path="/add">
               <AddPage dispatch={this.props.dispatch} />
             </Route>

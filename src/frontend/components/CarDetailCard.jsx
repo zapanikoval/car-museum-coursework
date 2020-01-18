@@ -7,6 +7,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 
@@ -34,7 +35,7 @@ const UpdateButton = withStyles(theme => ({
   }
 }))(Fab);
 
-const useStyles = makeStyles({
+const classes = {
   card: {
     maxWidth: 330,
     maxHeight: 490,
@@ -51,39 +52,99 @@ const useStyles = makeStyles({
     color: "#580909",
     fontFamily: ['"Lobster"', "cursive"].join(",")
   }
-});
+};
 
-export default function CarDetailCard(props) {
-  const { img, name, description } = props;
-  const classes = useStyles();
-  return (
-    <div className="card">
-      <Card className={classes.card}>
-        <CardActionArea>
-          <CardMedia className={classes.media} image={img} title="Image" />
-          <CardContent className={classes.content}>
-            <Typography
-              gutterBottom
-              variant="h5"
-              component="h2"
-              className={classes.title}
-            >
-              {name}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {description}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <DeleteButton>
-            <DeleteIcon />
-          </DeleteButton>
-          <UpdateButton>
-            <UpdateIcon />
-          </UpdateButton>
-        </CardActions>
-      </Card>
-    </div>
-  );
+export default class CarDetailCard extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      deleting: false,
+      loader: false
+    };
+    this.toggleDelete = this.toggleDelete.bind(this);
+    this.handleDeleting = this.handleDeleting.bind(this);
+  }
+
+  toggleDelete() {
+    console.log("toggle click");
+
+    this.setState({
+      deleting: !this.state.deleting
+    });
+  }
+
+  handleDeleting() {
+    this.setState({
+      loader: true
+    });
+    setTimeout(() => {
+      this.props.onDeleteCar(this.props.car._id);
+    }, 2000);
+  }
+
+  render() {
+    const { img, name, description } = this.props;
+    // const classes = useStyles();
+    return (
+      <div className="card">
+        <Card style={classes.card}>
+          <CardActionArea>
+            <CardMedia style={classes.media} image={img} title="Image" />
+            <CardContent style={classes.content}>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="h2"
+                style={classes.title}
+              >
+                {name}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {description}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            {this.state.deleting ? (
+              <div>
+                {this.state.loader ? (
+                  <div className="spinner-border" role="status">
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                ) : (
+                  <div className="deleting-block">
+                    <p>Уверены?</p>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={this.handleDeleting}
+                    >
+                      Да
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      onClick={this.toggleDelete}
+                    >
+                      Нет
+                    </Button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <>
+                <DeleteButton onClick={this.toggleDelete}>
+                  <DeleteIcon />
+                </DeleteButton>
+                <UpdateButton>
+                  <UpdateIcon />
+                </UpdateButton>
+              </>
+            )}
+          </CardActions>
+        </Card>
+      </div>
+    );
+  }
 }

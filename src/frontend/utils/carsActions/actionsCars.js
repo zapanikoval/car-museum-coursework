@@ -40,7 +40,7 @@ export function deleteCar(id) {
       contentType: "application/json",
       method: "DELETE",
       success: function(result) {
-        dispatch({ type: "DELETE_CAR", id: result._id });
+        dispatch({ type: "DELETE_CAR", id: result });
       }
     });
   };

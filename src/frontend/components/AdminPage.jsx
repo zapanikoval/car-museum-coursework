@@ -9,6 +9,11 @@ import { NavLink } from "react-router-dom";
 class AdminPage extends React.Component {
   constructor(props) {
     super(props);
+    this.onDeleteCar = this.onDeleteCar.bind(this);
+  }
+
+  onDeleteCar(id) {
+    this.props.dispatch(deleteCar(id));
   }
   render() {
     const { cars } = this.props;
@@ -31,6 +36,7 @@ class AdminPage extends React.Component {
                 description={car.shortDescr}
                 key={car._id}
                 car={car}
+                onDeleteCar={this.onDeleteCar}
               />
             ))}
           </div>

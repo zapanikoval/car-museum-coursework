@@ -94,7 +94,9 @@ app.delete("/api/cars/delete/:id", (req, res) => {
   const id = req.params.id;
   Car.findByIdAndDelete(id, (err, car) => {
     if (err) return console.log(err);
-    res.send(car);
+    console.log("DELETED_CAR", car._id);
+
+    res.send(id);
   });
 });
 
