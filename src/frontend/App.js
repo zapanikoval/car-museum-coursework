@@ -14,6 +14,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 import fetchCars from "./utils/carsActions/fetchCars";
+import UpdatePage from "./containers/UpdatePage";
 
 class App extends React.Component {
   constructor(props) {
@@ -28,7 +29,6 @@ class App extends React.Component {
 
   render() {
     const { cars, auth } = this.props;
-    console.log(cars);
 
     if (cars !== undefined) {
       return (
@@ -64,15 +64,21 @@ class App extends React.Component {
               />
             </Route>
             {auth ? (
-            <Route path="/admin">
-              <AdminPage cars={cars} dispatch={this.props.dispatch} />
-            </Route>
+              <Route path="/admin">
+                <AdminPage cars={cars} dispatch={this.props.dispatch} />
+              </Route>
             ) : (
               <Redirect to="signin" />
             )}
             <Route path="/add">
               <AddPage dispatch={this.props.dispatch} />
             </Route>
+            <Route
+              path="/update/:carId"
+              render={routeProps => (
+                <UpdatePage {...routeProps} dispatch={this.props.dispatch} />
+              )}
+            />
             <Route path="*">
               <Redirect to="/main" />
             </Route>
@@ -80,7 +86,10 @@ class App extends React.Component {
           <Footer />
         </>
       );
-    } else return <h1>Загрузка...</h1>;
+    } else
+      return (
+        <h1 style={{ color: "white", textAlign: "center" }}>Загрузка...</h1>
+      );
   }
 }
 

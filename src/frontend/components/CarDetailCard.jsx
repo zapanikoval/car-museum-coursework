@@ -10,6 +10,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
+import { NavLink } from "react-router-dom";
 
 import "../styles/CarDetailCard.scss";
 
@@ -138,7 +139,9 @@ export default class CarDetailCard extends React.Component {
                   <DeleteIcon />
                 </DeleteButton>
                 <UpdateButton>
-                  <UpdateIcon />
+                  <NavLink to={`/update/${this.props.car._id}`} className="link">
+                    <UpdateIcon />
+                  </NavLink>
                 </UpdateButton>
               </>
             )}

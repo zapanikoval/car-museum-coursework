@@ -25,7 +25,7 @@ class Header extends React.Component {
     this.state = {
       loading: false
     };
-    this.handleClick = this.handleClick.bind(this);
+     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {

@@ -85,6 +85,8 @@ app.put("/api/cars/update", (req, res) => {
     { new: true },
     (err, car) => {
       if (err) return console.log(err);
+      console.log("CAR UPDATE. SEND:", car);
+
       res.send(car);
     }
   );

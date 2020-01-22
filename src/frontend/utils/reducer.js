@@ -11,8 +11,9 @@ export default function reducer(state = {}, action) {
       const newCars = state.cars.map(car => {
         if (car._id === action.car._id) {
           return action.car;
-        }
+        } else return car;
       });
+      console.log("NEW CARS FROM REDUCER:", newCars);
       return { ...state, cars: newCars };
     }
     case "DELETE_CAR": {

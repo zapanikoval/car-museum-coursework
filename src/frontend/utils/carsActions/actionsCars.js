@@ -27,6 +27,7 @@ export function updateCar(car) {
       method: "PUT",
       data: JSON.stringify(car),
       success: function(result) {
+        console.log("FROM ACTION:", result);
         dispatch({ type: "UPDATE_CAR", car: result });
       }
     });
